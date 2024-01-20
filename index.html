@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="modal.css">
+        <title>Graphics</title>
+    </head>
+    <body id="main">
+        <section class="graphics">
+            <div class="graphics__y"></div>
+            <div style="width: 90%;">
+                <div class="graphics__content"></div>
+                <div class="graphics__x"></div>
+            </div>
+        </section>
+
+        <div class="modal" id="modal-columns-number">
+            <h2 class="modal__title">Insira o número de colunas desejadas: </h2>
+            <input type="number" id="columnsNumber" class="modal__input" value=0>
+            <div class="modal__buttons">
+                <button class="modal___button" onclick="showColumnOptionsByDefinedNumber()">Confirmar</button>
+                <button class="modal___button">Fechar</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-columns-options"></div>
+    </body>
+    <script src="index.js"></script>
+    <script src="modal.js"></script>
+</html>
