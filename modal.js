@@ -6,16 +6,12 @@ window.addEventListener("load", function () {
     showModalColumnsNumber.style.display = "flex";
 });
 
-if(showModalColumnsNumber.style.display === "flex"){
-    body.style.opacity = "0.5";
-}
-
 function showColumnOptionsByDefinedNumber(){
     showModalColumnsNumber.style.display = "none";
     showModalColumnsOptions.style.display = "flex";
 
     for(var currentOption = 0; currentOption < columnsNumber.value; currentOption++){
-        defineNewOption(currentOption);
+        defineOption(currentOption);
     }
 
     defineButtonsDiv();
@@ -26,51 +22,44 @@ function defineButtonsDiv(){
     buttonDiv.className = "modal__buttons";
     showModalColumnsNumber.appendChild(buttonDiv);
 
-    defineNewOptionButton(buttonDiv, "Salvar");
-    defineNewOptionButton(buttonDiv, "Fechar");
+    defineOptionButton(buttonDiv, "Salvar");
+    defineOptionButton(buttonDiv, "Fechar");
 }
 
-function defineNewOptionButton(newButtonDiv, title){
-    const newButton = document.createElement("button");
-    newButton.innerHTML = title;
-    newButtonDiv.appendChild(newButton);
+function defineOptionButton(buttonDiv, title){
+    const button = document.createElement("button");
+    button.innerHTML = title;
+    buttonDiv.appendChild(button);
 }
 
-function defineNewOption(currentOption){
+function defineOption(currentOption){
     const newOptionDiv = document.createElement("div");
-    defineNewOptionDiv(newOptionDiv);
-    
-    const labelNameOption = document.createElement("label");
-    const inputNameOption = document.createElement("input");
-    defineNewInfosColumnDiv(newOptionDiv, "Nome", labelNameOption, inputNameOption, `Nome da coluna ${currentOption}`, "text");
-
-    const labelValueOption = document.createElement("label");
-    const inputValueOption = document.createElement("input");
-    defineNewInfosColumnDiv(newOptionDiv, "Valor", labelValueOption, inputValueOption, `Valor da coluna ${currentOption}`, "number");
-}
-
-function defineNewOptionDiv(newOptionDiv){
     newOptionDiv.className = "modal__option";
     showModalColumnsOptions.appendChild(newOptionDiv);
+
+    defineInfosColumnDiv(newOptionDiv, "Nome", `Nome da coluna ${currentOption}`, "text");
+    defineInfosColumnDiv(newOptionDiv, "Valor", `Valor da coluna ${currentOption}`, "number");
 }
 
-function defineNewInfosColumnDiv(newOptionDiv, title, labelElement, inputElement, labelContent, inputType){
+function defineInfosColumnDiv(newOptionDiv, title, labelElement, inputElement, labelContent, inputType){
     const newInfosColumnDiv = document.createElement("div");
     newInfosColumnDiv.className = "modal___info-column"
     newInfosColumnDiv.title = title;
     newOptionDiv.appendChild(newInfosColumnDiv);
 
-    defineNewLabel(newInfosColumnDiv, labelElement, labelContent);
-    defineNewInputOption(newInfosColumnDiv, inputElement, inputType);
+    defineLabel(newInfosColumnDiv, labelElement, labelContent);
+    defineInputOption(newInfosColumnDiv, inputElement, inputType);
 }
 
-function defineNewLabel(newInfoColumnDiv, newLabelNameOption, text){
-    newLabelNameOption.innerHTML = text;
-    newLabelNameOption.className = "modal___label";
-    newInfoColumnDiv.appendChild(newLabelNameOption);
+function defineLabel(newInfoColumnDiv, text){
+    const newLabelOption = document.createElement("label");
+    newLabelOption.innerHTML = text;
+    newLabelOption.className = "modal___label";
+    newInfoColumnDiv.appendChild(newLabelOption);
 }
 
-function defineNewInputOption(newInfoColumnDiv, newInputOption, type){
+function defineInputOption(newInfoColumnDiv, type){
+    const newInputOption = document.createElement("input");
     newInputOption.type = type;
     newInputOption.className = "modal___input";
     newInfoColumnDiv.appendChild(newInputOption);
